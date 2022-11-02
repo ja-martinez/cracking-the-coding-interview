@@ -1,0 +1,23 @@
+{
+  "name": "cracking-the-coding-interview",
+  "version": "1.0.0",
+  "description": "problems and exercises from cracking the coding interview",
+  "main": "1.1-check-permutation.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ja-martinez/cracking-the-coding-interview.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ja-martinez/cracking-the-coding-interview/issues"
+  },
+  "homepage": "https://github.com/ja-martinez/cracking-the-coding-interview#readme",
+  "devDependencies": {
+    "jest": "^29.2.2"
+  },
+  "type": "module"
+}
