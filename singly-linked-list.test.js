@@ -92,6 +92,37 @@ test('delete() will not change list if data is not fount', () => {
   expect(list.toString()).toBe('0 -> 1 -> 2 -> 3 -> 4')
 })
 
+test('removeDups() will not change list if list is empty', () => {
+  const list = new SLList();
+  list.removeDups();
+
+  expect(list.toString()).toBe('')
+})
+
+test('removeDups() will not change list if nonemmpty list has no duplicates', () => {
+  const list = createTestList();
+  list.removeDups();
+
+  expect(list.toString()).toBe('0 -> 1 -> 2 -> 3 -> 4')
+})
+
+test('removeDups() will remove one duplicate', () => {
+  const list = createTestList();
+  list.insertEnd(new SLNode(0));
+  list.removeDups();
+
+  expect(list.toString()).toBe('0 -> 1 -> 2 -> 3 -> 4')
+})
+
+test('removeDups will remove multiple duplicates', () => {
+  const list = createTestList();
+  list.insertEnd(new SLNode(2));
+  list.insertEnd(new SLNode(1));
+  list.removeDups();
+
+  expect(list.toString()).toBe('0 -> 1 -> 2 -> 3 -> 4');
+})
+
 function createTestList() {
   let nodeData = new Array(5).fill(0).map((el, index) => index);
   let prevNode = null;

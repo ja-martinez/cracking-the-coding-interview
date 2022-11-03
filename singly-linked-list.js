@@ -100,6 +100,25 @@ class SLList {
       prevNode = prevNode.next;
     }
   }
+
+  removeDups() {
+    if (this.head === null) {
+      return;
+    }
+
+    const dataSeen = {[this.head.data]: 1};
+    let prevNode = this.head;
+
+    while (prevNode.next !== null) {
+      if (dataSeen[prevNode.next.data]) {
+        prevNode.next = prevNode.next.next;
+        continue;
+      }
+      
+      dataSeen[prevNode.next.data] = 1;
+      prevNode = prevNode.next;
+    }
+  }
 }
 
 class SLNode {
