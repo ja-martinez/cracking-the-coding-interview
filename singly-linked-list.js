@@ -3,7 +3,7 @@ Singly linked list implementation
 
 Singly Linked List
 *Properties
--root
+-head
 *Methods
 -print
 -add/insert
@@ -21,25 +21,39 @@ Singly Linked Node
 */
 
 class SLList {
-  constructor(root=null) {
-    this.root = root;
+  constructor(head=null) {
+    this.head = head;
   }
+  
+  toString() {
+    return SLList.#nodeChainString(this.head)
+  }
+  
+  static #nodeChainString(node) {
+    if (node === null) {
+      return "";
+    }
+    const string = node.toString()
 
-  toString(node) {
-    return SLList.#nodeChainString(this.root)
+    if (node.next === null) {
+      return string;
+    }
+
+    return `${string} -> ` + this.#nodeChainString(node.next)
   }
 
   insertStart(node) {
-    node.next = this.root;
-    this.root = node;
+    node.next = this.head;
+    this.head = node;
   }
 
   insertEnd(node) {
-    if (this.root === null) {
+    if (this.head === null) {
       this.insertStart(node);
+      return;
     }
 
-    let lastNode = this.root;
+    let lastNode = this.head;
 
     while (lastNode.next !== null) {
       lastNode = lastNode.next;
@@ -48,12 +62,13 @@ class SLList {
     lastNode.next = node;
   }
 
-  insert(node, place) { // places node at the nth place
-    if (place === 1 || this.root === null) {
+  insert(place, node) { // places node at the nth place 
+    if (place <= 1 || this.head === null) {
       this.insertStart(node);
+      return;
     }
 
-    let prevNode = this.root
+    let prevNode = this.head
     let nodeCount = 1
 
     while (prevNode.next !== null && nodeCount < place - 1) {
@@ -65,14 +80,25 @@ class SLList {
     prevNode.next = node;
   }
 
-  static #nodeChainString(node) {
-    const string = node.toString()
-
-    if (node.next === null) {
-      return string;
+  delete(data) { // deletes first occurrence of data
+    if (this.head === null) { // if empty
+      return;
     }
 
-    return `${string} -> ` + this.#nodeChainString(node.next)
+    if (this.head.data === data) {
+      this.head = this.head.next;
+      return;
+    }
+
+    let prevNode = this.head;
+
+    while(prevNode.next !== null) {
+      if (prevNode.next.data === data) {
+        prevNode.next = prevNode.next.next;
+        return;
+      }
+      prevNode = prevNode.next;
+    }
   }
 }
 
