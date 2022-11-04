@@ -134,3 +134,5 @@ function createTestList() {
 
   return new SLList(prevNode);
 }
+
+module.exports = {createTestList}

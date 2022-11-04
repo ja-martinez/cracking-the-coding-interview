@@ -52,6 +52,7 @@ class SLList {
       this.insertStart(node);
       return;
     }
+    node.next = null;
 
     let lastNode = this.head;
 
@@ -63,6 +64,8 @@ class SLList {
   }
 
   insert(place, node) { // places node at the nth place 
+    node.next = null;
+    
     if (place <= 1 || this.head === null) {
       this.insertStart(node);
       return;
@@ -114,7 +117,7 @@ class SLList {
         prevNode.next = prevNode.next.next;
         continue;
       }
-      
+
       dataSeen[prevNode.next.data] = 1;
       prevNode = prevNode.next;
     }
