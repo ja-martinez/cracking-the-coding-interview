@@ -85,7 +85,7 @@ test('delete() will delete node in the middle', () => {
   expect(list.toString()).toBe('0 -> 1 -> 2 -> 4')
 })
 
-test('delete() will not change list if data is not fount', () => {
+test('delete() will not change list if data is not found', () => {
   const list = createTestList();
   list.delete(7);
 

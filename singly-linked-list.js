@@ -21,8 +21,23 @@ Singly Linked Node
 */
 
 class SLList {
-  constructor(head=null) {
-    this.head = head;
+  constructor(node=null) {
+    this.head = node;
+  }
+
+  static listFromData(reverse=false, ...nodeData) {
+    let prevNode = null;
+    
+    if (reverse) {
+      for (const data of nodeData) {
+        prevNode = new SLNode(data, prevNode);
+      }
+    } else {      
+      for (let i=nodeData.length-1; i>= 0; i--) {
+         prevNode = new SLNode(nodeData[i], prevNode);
+      }
+    }
+    return new SLList(prevNode)
   }
   
   toString() {
@@ -65,7 +80,7 @@ class SLList {
 
   insert(place, node) { // places node at the nth place 
     node.next = null;
-    
+
     if (place <= 1 || this.head === null) {
       this.insertStart(node);
       return;

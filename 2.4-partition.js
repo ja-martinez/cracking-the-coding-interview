@@ -90,4 +90,4 @@ function partitionOneList(list, x) {
   list.head = newHead;
 }
 
-exports.partition = partition;
+exports.partition = partitionInPlace;
