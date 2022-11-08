@@ -18,6 +18,5 @@
   "homepage": "https://github.com/ja-martinez/cracking-the-coding-interview#readme",
   "devDependencies": {
     "jest": "^29.2.2"
-  },
-  "type": "module"
+  }
 }
